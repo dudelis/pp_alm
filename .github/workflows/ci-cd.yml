@@ -3,7 +3,9 @@ name: CI / CD
 
 on:
   push:
-  
+    paths:
+      include:
+        - solutions/**
   workflow_dispatch:
   
 jobs:
