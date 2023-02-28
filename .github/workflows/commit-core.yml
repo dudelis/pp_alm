@@ -36,8 +36,8 @@ jobs:
           solution-output-file: pub_core_managed.zip
           solution-name: pub_core
           managed: true
-          - name: Clear existing solution folder
-      - run: |
+      - name: Clear existing solution folder
+        run: |
         rm -rf solutions/${{ inputs.solution-name }}/src
         shell: bash
 
