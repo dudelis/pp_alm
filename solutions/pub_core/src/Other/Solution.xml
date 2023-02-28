@@ -79,6 +79,7 @@
     </Publisher>
     <RootComponents>
       <RootComponent type="1" schemaName="pub_customtable" behavior="0" />
+      <RootComponent type="1" schemaName="pub_table" behavior="0" />
     </RootComponents>
     <MissingDependencies />
   </SolutionManifest>
