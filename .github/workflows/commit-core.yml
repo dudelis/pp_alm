@@ -1,0 +1,53 @@
+
+name: CI / CD
+
+on:  
+  workflow_dispatch:
+    inputs:
+      message:
+        default: Automated commit
+        description: Message for the commit
+        required: true
+  
+jobs:
+  export-unpack-commit:
+    environment: dev-core
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        wiht:
+          token: ${{ secrets.MY_GITHUB_TOKEN}}
+
+      - uses: microsoft/powerplatform-actions/export-solution@v0
+        with:
+          environment-url: ${{ secrets.URL }}
+          app-id: ${{ secrets.CLIENT_ID }}
+          client-secret: ${{ secrets.SECRET }}
+          tenant-id: ${{ secrets.TENANT_ID }}
+          solution-output-file: pub_core.zip
+          solution-name: pub_core
+
+      - uses: microsoft/powerplatform-actions/export-solution@v0
+        with:
+          environment-url: ${{ secrets.URL }}
+          app-id: ${{ secrets.CLIENT_ID }}
+          client-secret: ${{ secrets.SECRET }}
+          tenant-id: ${{ secrets.TENANT_ID }}
+          solution-output-file: pub_core_managed.zip
+          solution-name: pub_core
+          managed: true
+          - name: Clear existing solution folder
+      - run: |
+        rm -rf solutions/${{ inputs.solution-name }}/src
+        shell: bash
+        
+      - uses: microsoft/powerplatform-actions/unpack-solution@v0
+        with:
+          solution-file: pub_core.zip
+          solution-folder: solutions/pub_core/src
+          solution-type: Both
+
+        
+      - uses: EndBug/add-and-commit@v8
+        with:
+          message: ${{ github.event.inputs.message }}
