@@ -24,6 +24,27 @@ jobs:
           name: packed-solutions
           path: packed-solutions
   
+  deploy:
+    environment: Production
+    needs: [build]
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: packed-solutions
+
+      - uses: microsoft/powerplatform-actions/import-solution@v0
+        with:
+          environment-url: ${{ secrets.URL }}
+          app-id: ${{ secrets.CLIENT_ID }}
+          client-secret: ${{ secrets.SECRET }}
+          tenant-id: ${{ secrets.TENANT_ID }}
+          solution-file: pub_core_managed.zip
+
+
+
+
       
 
       
