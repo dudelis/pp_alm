@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EntityRelationships xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <EntityRelationship Name="business_unit_pub_customtable" />
+  <EntityRelationship Name="business_unit_pub_table" />
+  <EntityRelationship Name="lk_pub_customtable_createdby" />
+  <EntityRelationship Name="lk_pub_customtable_modifiedby" />
+  <EntityRelationship Name="lk_pub_table_createdby" />
+  <EntityRelationship Name="lk_pub_table_modifiedby" />
+  <EntityRelationship Name="owner_pub_customtable" />
+  <EntityRelationship Name="owner_pub_table" />
+  <EntityRelationship Name="team_pub_customtable" />
+  <EntityRelationship Name="team_pub_table" />
+  <EntityRelationship Name="user_pub_customtable" />
+  <EntityRelationship Name="user_pub_table" />
+</EntityRelationships>
