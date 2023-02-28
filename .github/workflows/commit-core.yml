@@ -38,7 +38,7 @@ jobs:
           managed: true
       - name: Clear existing solution folder
         run: |
-        rm -rf solutions/${{ inputs.solution-name }}/src
+          rm -rf solutions/${{ inputs.solution-name }}/src
         shell: bash
 
       - uses: microsoft/powerplatform-actions/unpack-solution@v0
