@@ -40,7 +40,7 @@ jobs:
       - run: |
         rm -rf solutions/${{ inputs.solution-name }}/src
         shell: bash
-        
+
       - uses: microsoft/powerplatform-actions/unpack-solution@v0
         with:
           solution-file: pub_core.zip
